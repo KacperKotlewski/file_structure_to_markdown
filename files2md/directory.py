@@ -5,9 +5,9 @@ class DirectoryObj(StructureObject):
         self.type = type(self)
         self.files = []
 
-    def addFile(self, file):
-        if(type(file) == StructureObject):
-            self.files.append(file)
+    def addFile(self, file:StructureObject):
+        if
+        self.files.append(file)
 
     def getFiles(self):
         return self.files
@@ -20,30 +20,28 @@ class DirectoryObj(StructureObject):
         if(autoAddSubdirs):
             for d in self.files:
                 if d.type == DirectoryObj and autoAddSubdirs:
-                    d.autoAddFile(True)
+                    d.autoAddFile(autoAddSubdirs=True)
 
-    def getSubdirsAndFiles(self):
+    def getSubdirsAndFiles(self, dirprefix=""):
+        pref  = ((dirprefix[:-1]+"-") if (dirprefix != "") else "")
+        print(pref+self.getName())
+        dirprefix += "| "
         for d in self.files:
-            print(d.getName())
             if d.type == DirectoryObj:
-                d.getSubdirsAndFiles()
+                d.getSubdirsAndFiles(dirprefix)
+            else:
+                print(dirprefix+d.getName())
 
     def _autoListDirsInside(self):
         import os
         for dirname, dirnames, filenames in os.walk(self.getDir()):
             obj = None
             for subdirname in dirnames:
-                obj = DirectoryObj(name=subdirname, dir=dirname)
+                obj = DirectoryObj(name=subdirname, dir=str(os.path.join(dirname, subdirname)))
+                self.addFile(obj)
 
             from files2md.file import FileObj
             for filename in filenames:
                 obj = FileObj(name=filename, dir=dirname)
-
-            if(obj != None):
-                print(obj.getName())
                 self.addFile(obj)
-
-            if '.git' in dirnames:
-                dirnames.remove('.git')
-                dirnames.remove('.idea')
             break
