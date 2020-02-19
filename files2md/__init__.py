@@ -1,3 +1,4 @@
+import files2md
 import files2md.config
 import files2md.structure_objects
 import files2md.to_markdown
