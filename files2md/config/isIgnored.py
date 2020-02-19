@@ -1,5 +1,5 @@
 from files2md.config import config
-from files2md.structure_objects.directoryObj import DirectoryObj
+from files2md.structurable_directory.directoryObj import DirectoryObj
 from files2md.structure_objects.structureObject import StructureObject
 
 def isIgnored(file:StructureObject):
