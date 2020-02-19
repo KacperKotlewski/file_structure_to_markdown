@@ -13,37 +13,24 @@ python -m pip install git+https://github.com/KacperKotlewski/file_structure_to_m
 ## Usage
 Using python & console or bash
 >```bash
->python -m file2md
+>python -m files2md
 >```
 
 ---
 ## Project structure
 ```
-CBS_DiscordBot
-| README.md
+file_structure_to_markdown
 | .gitignore
-| LICENCSE
-| setup.py                <- module setup
-| run.py                  <- run file in python
-| run.bat                 <- run file for windows
-| run.sh                  <- run file for linux
-|-example
-| | bot.py                <-example bot
-| | conf                  <- configuration file of example bot
-|-cbs_db                  <- src folder
-| | __init__.py           <- main bot instance
-| | config.py             <- pure config 
-| |-bot_class
-| | | __init__.py         <- bot builder class for new istances
-| |-cogs                  <- cogs
-| | |-musicbot
-| | | | __init__.py       <- musicbot main cog
-| | |-util
-| | | | __init__.py       <- utilities
-| | | ...                 <- other cogs in future
-|-test                    <- unit test folder
-|-build
-|-dist
+| LICENSE
+| README.md
+| setup.py
+|-files2md
+| | __main__.py
+| | __init__.py
+| | config.py
+| | directory.py
+| | file.py
+| | structure_object.py
 ```
 
 ---
@@ -53,4 +40,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-[GNU](https://choosealicense.com/licenses/gpl-3.0/)
+[MIT](https://choosealicense.com/licenses/mit/)
