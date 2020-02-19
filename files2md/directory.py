@@ -1,4 +1,5 @@
 from files2md.structure_object import StructureObject
+from files2md import config
 class DirectoryObj(StructureObject):
     def __init__(self, dir, name):
         super().__init__(name=name, dir=dir)
@@ -6,6 +7,7 @@ class DirectoryObj(StructureObject):
         self.files = []
 
     def addFile(self, file:StructureObject):
+        if not config.isIgnored(file.getName()):
             self.files.append(file)
 
     def getFiles(self):
