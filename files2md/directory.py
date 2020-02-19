@@ -6,8 +6,7 @@ class DirectoryObj(StructureObject):
         self.files = []
 
     def addFile(self, file:StructureObject):
-        if
-        self.files.append(file)
+            self.files.append(file)
 
     def getFiles(self):
         return self.files
