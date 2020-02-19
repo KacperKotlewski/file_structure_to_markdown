@@ -5,8 +5,8 @@ with open("README.md", "r") as fh:
 
 setup(
     name = "file_structure_to_markdown",
-    version = "0.0.1",
-    description = "Simple to use compiler of file structure to markdown representation",
+    version = "2020.2.19",
+    description = "Simple to use file structure compiler to markdown representation",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/KacperKotlewski/file_structure_to_markdown",
@@ -14,7 +14,7 @@ setup(
     packages=find_namespace_packages(include=['files2md.*']),
     python_requires='>=3.7',
     classifiers=[
-        'Development Status :: Alfa',
+        'Development Status :: Beta',
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Operating System :: Microsoft :: Windows',
