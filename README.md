@@ -18,6 +18,7 @@ Using python & console or bash
 
 ---
 ## Project structure
+<!-- files2md start -->
 ```
 file_structure_to_markdown
 | .gitignore
@@ -41,7 +42,12 @@ file_structure_to_markdown
 | | | | build_tree.py
 | | | | directoryObj.py
 | | | | __init__.py
+| |-to_markdown
+| | | to_markdown_file.py
+| | | user_input.py
+| | | __init__.py
 ```
+<!-- files2md end -->
 
 ---
 ## Contributing

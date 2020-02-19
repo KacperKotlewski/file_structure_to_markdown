@@ -4,8 +4,9 @@ import colorama
 from colorama import Fore, Back, Style
 
 class ToMarkdownFile:
-    def __init__(self, str_to_save:str, path:str=".", filename:str="README2.md", mode:str="x", questions:bool=True, replace:bool=False):
+    def __init__(self, str_to_save:str, path:str=".", filename:str="file_structure.md", mode:str="x", questions:bool=True, replace:bool=False):
         self.conf = {
+            "title":"## File Structure",
             "fileStart":"<!-- files2md start -->",
             "fileEnd":"<!-- files2md end -->",
             "path" : path,
@@ -14,7 +15,7 @@ class ToMarkdownFile:
             "questions" : questions,
             "replace" : replace,
         }
-        self.content = self.conf["fileStart"] + "\n```\n" + str_to_save + "```\n" + self.conf["fileEnd"]
+        self.content = self.conf["title"] + "\n" + self.conf["fileStart"] + "\n```\n" + str_to_save + "```\n" + self.conf["fileEnd"]
         self.userInp = UserInput(tryAgain=UserInput.tryAgain["try"])
         self.col = colorama.init()
 
