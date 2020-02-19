@@ -3,11 +3,10 @@ from files2md import config
 class DirectoryObj(StructureObject):
     def __init__(self, dir, name):
         super().__init__(name=name, dir=dir)
-        self.type = type(self)
         self.files = []
 
     def addFile(self, file:StructureObject):
-        if not config.isIgnored(file.getName()):
+        if not config.isIgnored(file):
             self.files.append(file)
 
     def getFiles(self):
@@ -20,7 +19,7 @@ class DirectoryObj(StructureObject):
         self._autoListDirsInside()
         if(autoAddSubdirs):
             for d in self.files:
-                if d.type == DirectoryObj and autoAddSubdirs:
+                if d.getType() == DirectoryObj and autoAddSubdirs:
                     d.autoAddFile(autoAddSubdirs=True)
 
     def getSubdirsAndFiles(self, dirprefix=""):
@@ -28,7 +27,7 @@ class DirectoryObj(StructureObject):
         print(pref+self.getName())
         dirprefix += "| "
         for d in self.files:
-            if d.type == DirectoryObj:
+            if d.getType() == DirectoryObj:
                 d.getSubdirsAndFiles(dirprefix)
             else:
                 print(dirprefix+d.getName())

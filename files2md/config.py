@@ -1,8 +1,11 @@
 config = {
-    "ignore": [".git", ".idea", "build", "dist", "*.egg-info", "__pycache__"],
+    "ignore": [".git/", ".idea/", "build/", "dist/", "*.egg-info/", "__pycache__/"],
     }
+from files2md.structure_object import StructureObject
+import files2md
 
-def isIgnored(filename:str):
+def isIgnored(file:StructureObject):
+    filename = file.getName()+("/" if (file.getType()==files2md.DirectoryObj) else "")
     for ignored in config["ignore"]:
         if ignored == filename:
             return True
