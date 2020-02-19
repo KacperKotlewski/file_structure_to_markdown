@@ -1,4 +1,3 @@
-import os
 from files2md.directory import DirectoryObj
 
 def list():
