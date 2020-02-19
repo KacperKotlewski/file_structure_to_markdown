@@ -11,7 +11,6 @@ def tree2md():
 
     dir = DirectoryObj(name=currentDirName, dir=currentDir)
     dir.autoAddFile(autoAddSubdirs=True)
-    print(dir.getTree())
     ToMarkdownFile(dir.getTree()).save()
 
 

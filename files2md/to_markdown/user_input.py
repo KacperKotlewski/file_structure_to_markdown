@@ -20,7 +20,7 @@ class UserInput():
                 restricted_inputs = [inp.lower() for inp in restricted_inputs]
 
             if inp in restricted_inputs:
-                out = inp
+                out = i
                 break
             else:
                 self._printTry(tryagain)
@@ -38,14 +38,17 @@ class UserInput():
             if lowerCase:
                 inp = inp.lower()
             if statment == None:
+                out=inp
                 break
             elif invertedStatment:
                 if not statment(inp):
+                    out=inp
                     break
                 else:
                     self._printTry(tryagain)
             else:
                 if statment(inp):
+                    out=inp
                     break
                 else:
                     self._printTry(tryagain)
