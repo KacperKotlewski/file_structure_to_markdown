@@ -1,6 +1,6 @@
-from files2md.structure_objects import StructureObject
-from files2md.structure_objects.directory.appendSubdirs import appendSubdirs
-from files2md.structure_objects.directory.buildFilesTree import buildFilesTree
+from files2md.structure_objects.appendSubdirs import AppendSubdirs
+from files2md.structure_objects.buildFilesTree import  BuildFilesTree
+from files2md.structure_objects.structureObject import StructureObject
 from files2md import config
 
 class DirectoryObj(StructureObject):
@@ -19,11 +19,11 @@ class DirectoryObj(StructureObject):
         return [f for f in self.files if f.dir == dir][0]
 
     def autoAddFile(self, autoAddSubdirs=False):
-        appendSubdirs(self)
+        AppendSubdirs(self)
         if(autoAddSubdirs):
             for d in self.files:
                 if d.getType() == DirectoryObj:
                     d.autoAddFile(autoAddSubdirs=True)
 
     def getTree(self):
-        buildFilesTree(self)
+        return BuildFilesTree(self)

@@ -1,6 +1,6 @@
-from files2md.structure_objects.directory import DirectoryObj
+from files2md.structure_objects import DirectoryObj
 
-def appendSubdirs(dir_obj:DirectoryObj):
+def AppendSubdirs(dir_obj:DirectoryObj):
     import os
     for dirname, dirnames, filenames in os.walk(dir_obj.getDir()):
         obj = None

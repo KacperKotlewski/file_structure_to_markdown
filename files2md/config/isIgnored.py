@@ -1,9 +1,9 @@
 from files2md.config import config
-from files2md.structure_object import StructureObject
-import files2md
+from files2md.structure_objects.directoryObj import DirectoryObj
+from files2md.structure_objects.structureObject import StructureObject
 
 def isIgnored(file:StructureObject):
-    filename = file.getName()+("/" if (file.getType()==files2md.DirectoryObj) else "")
+    filename = file.getName()+("/" if (file.getType()==DirectoryObj) else "")
     for ignored in config["ignore"]:
         if ignored == filename:
             return True

@@ -1,10 +1,5 @@
-from files2md.structure_objects import directory
-
-class StructureObject:
-    def __init__(self, name="", dir=""):
-        self.name = name
-        self.dir = dir
-
-    def getName(self): return self.name
-    def getDir(self): return self.dir
-    def getType(self): return type(self)
+from files2md.structure_objects.structureObject import StructureObject
+from files2md.structure_objects.file import FileObj
+from files2md.structure_objects.directoryObj import DirectoryObj
+from files2md.structure_objects.buildFilesTree import BuildFilesTree
+from files2md.structure_objects.appendSubdirs import AppendSubdirs
