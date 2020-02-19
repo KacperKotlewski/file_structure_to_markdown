@@ -13,6 +13,9 @@ setup(
     author= "Kacper Kotlewski",
     packages=find_namespace_packages(include=['files2md.*']),
     python_requires='>=3.7',
+    install_requires=[
+       "colorama",
+    ],
     classifiers=[
         'Development Status :: Beta',
         'Environment :: Console',
