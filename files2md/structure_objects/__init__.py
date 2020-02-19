@@ -1,3 +1,5 @@
+from files2md.structure_objects import directory
+
 class StructureObject:
     def __init__(self, name="", dir=""):
         self.name = name

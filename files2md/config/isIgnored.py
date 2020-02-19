@@ -1,6 +1,4 @@
-config = {
-    "ignore": [".git/", ".idea/", "build/", "dist/", "*.egg-info/", "__pycache__/"],
-    }
+from files2md.config import config
 from files2md.structure_object import StructureObject
 import files2md
 
