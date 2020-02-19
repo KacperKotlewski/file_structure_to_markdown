@@ -26,20 +26,14 @@ class UserInput():
     def _runAfter(self, after):
         if after == None:
             after = self.after
-
-        if type(after) == type(self._after_OK):
-            after()
-        elif type(after) == str:
+        if type(after) == str:
             print(after)
 
     def _printTry(self, try_again):
         if try_again == None:
             try_again = self.tryAgain
-
-        if type(try_again) == type(self._after_OK):
-            try_again()
-        elif type(try_again) == str:
+        if type(try_again) == str:
             print(try_again)
 
-    def _after_OK(self): print(Fore.GREEN + "OK")
-    after_OK = _after_OK
+    after = {"ok" : (Fore.GREEN + "OK" + Style.RESET_ALL) }
+    tryAgain = {"try" : (Fore.RED + "Try again!" + Style.RESET_ALL)}

@@ -11,7 +11,7 @@ class ToMarkdownFile:
             "saveMode" : mode,
             "questions" : questions,
         }
-        self.userInp = UserInput(after=UserInput.after_OK, tryAgain="Try again!")
+        self.userInp = UserInput(after=UserInput.after["ok"], tryAgain=UserInput.tryAgain["try"])
 
     def __call__(self):
         self.save()
@@ -26,9 +26,9 @@ class ToMarkdownFile:
         from colorama import Fore, Back, Style
         colorama.init()
 
-        print(Fore.RED + f"{self.conf['filename']} detected!")
+        print(Fore.RED + f"{self.conf['filename']} detected!" + Style.RESET_ALL)
         if self.userInp.restricted(restricted_inputs=["y","n"], to_print="You want to set new filename?", anyCase=True) != "y":
-            if input("You want to overwrite it? (y/n): ").lower() != "y":
+            if self.userInp.restricted(restricted_inputs=["y","n"], to_print="You want to overwrite it?", anyCase=True) != "y":
                 self.conf["mode"] = "a"
         else:
             input(Fore.YELLOW + "Set new file name: ")
