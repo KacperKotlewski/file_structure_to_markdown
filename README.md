@@ -23,14 +23,24 @@ file_structure_to_markdown
 | .gitignore
 | LICENSE
 | README.md
+| setup.bat
 | setup.py
 |-files2md
-| | __main__.py
 | | __init__.py
-| | config.py
-| | directory.py
-| | file.py
-| | structure_object.py
+| | __main__.py
+| |-config
+| | | config.py
+| | | isIgnored.py
+| | | __init__.py
+| |-structure_objects
+| | | file.py
+| | | structureObject.py
+| | | __init__.py
+| | |-structurable_directory
+| | | | append_subdirs.py
+| | | | build_tree.py
+| | | | directoryObj.py
+| | | | __init__.py
 ```
 
 ---
