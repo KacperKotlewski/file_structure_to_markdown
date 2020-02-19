@@ -4,39 +4,42 @@ import colorama
 from colorama import Fore, Back, Style
 
 class ToMarkdownFile:
-    def __init__(self, str_to_save:str, path:str=".", filename:str="README.md", mode:str=None, questions:bool=True):
+    def __init__(self, str_to_save:str, path:str=".", filename:str="README2.md", mode:str="x", questions:bool=True):
+        self.content = str_to_save
         self.conf = {
             "fileStart":"<!-- files2md start -->",
             "fileEnd":"<!-- files2md end -->",
-            "content" : str_to_save,
             "path" : path,
             "filename" : filename,
-            "saveMode" : mode,
+            "mode" : mode,
             "questions" : questions,
         }
         self.userInp = UserInput(tryAgain=UserInput.tryAgain["try"])
         self.col = colorama.init()
 
-    def __call__(self):
-        self.save()
-
     def save(self):
         self.conf["filename"] = self._checkFilename(self.conf["filename"])
+        if(self.conf["mode"] != None):
+            file = open(self.conf["filename"], self.conf["mode"])
+            file.write(self.content)
+            file.close()
 
-    def _checkFilename(self, name):
+    def _checkFilename(self, name:str):
         if self._isDetecting(name) and self.conf["questions"]:
             name = self._getModeFromUser(name)
         else:
             return name
 
 
-    def _getModeFromUser(self, name):
+    def _getModeFromUser(self, name:str):
 
         print(Fore.RED + f"{name} detected!" + Style.RESET_ALL)
         if self.userInp.restricted(restricted_inputs=["y","n"], to_print="You want to set new filename?", anyCase=True) == "n":
             if self.userInp.restricted(restricted_inputs=["y","n"], to_print="You want to overwrite it?", anyCase=True) == "n":
                 if self.userInp.restricted(restricted_inputs=["y","n"], to_print="You want to insert this file structure into existing file?", anyCase=True) == "y":
                     self.conf["mode"] = "a"
+                else:
+                    self.conf["mode"] = None
             else:
                 self.conf["mode"] = "w"
         else:

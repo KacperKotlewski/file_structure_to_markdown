@@ -9,12 +9,10 @@ def tree2md():
     currentDir = os.getcwd()
     currentDirName = str(os.path.basename(currentDir))
 
-    md = ToMarkdownFile("xd")
-    md()
-
     dir = DirectoryObj(name=currentDirName, dir=currentDir)
     dir.autoAddFile(autoAddSubdirs=True)
     print(dir.getTree())
+    ToMarkdownFile(dir.getTree()).save()
 
 
 if __name__ == "__main__":
