@@ -10,16 +10,45 @@ class UserInput():
         out = None
         while True:
             inpInStr = str('/'.join(map(str, restricted_inputs)))
-            i = input(f"{to_print} ({inpInStr}): ")
+            print(Fore.YELLOW + f"{to_print} ({inpInStr}): ", end = '')
+            i = input()
+            print(Style.RESET_ALL, end = '')
+
+            inp = i
             if anyCase:
-                i = i.lower()
+                inp = inp.lower()
                 restricted_inputs = [inp.lower() for inp in restricted_inputs]
 
-            if i in restricted_inputs:
-                out = i
+            if inp in restricted_inputs:
+                out = inp
                 break
             else:
                 self._printTry(tryagain)
+        self._runAfter(after)
+        return out
+
+    def normal(self, lowerCase=False, to_print:str="", after=None, tryagain=None, statment=None, invertedStatment:bool=False):
+        out = None
+        while True:
+            print(Fore.YELLOW + f"{to_print}: ", end = '')
+            i = input()
+            print(Style.RESET_ALL, end = '')
+
+            inp = i
+            if lowerCase:
+                inp = inp.lower()
+            if statment == None:
+                break
+            elif invertedStatment:
+                if not statment(inp):
+                    break
+                else:
+                    self._printTry(tryagain)
+            else:
+                if statment(inp):
+                    break
+                else:
+                    self._printTry(tryagain)
         self._runAfter(after)
         return out
 
@@ -35,5 +64,5 @@ class UserInput():
         if type(try_again) == str:
             print(try_again)
 
-    after = {"ok" : (Fore.GREEN + "OK" + Style.RESET_ALL) }
+    after = {"ok" : (Fore.LIGHTGREEN_EX + "OK" + Style.RESET_ALL) }
     tryAgain = {"try" : (Fore.RED + "Try again!" + Style.RESET_ALL)}
