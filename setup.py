@@ -11,7 +11,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/KacperKotlewski/file_structure_to_markdown",
     author= "Kacper Kotlewski",
-    packages=find_namespace_packages(include=['files2md.*']),
+    packages=find_namespace_packages(include=['files2md.*']) + ["files2md"],
     python_requires='>=3.7',
     install_requires=[
        "colorama",
