@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name = "file_structure_to_markdown",
-    version = "2020.2.20.1",
+    version = "2020.2.20.2",
     description = "Simple to use file structure compiler to markdown representation",
     long_description=long_description,
     long_description_content_type="text/markdown",
