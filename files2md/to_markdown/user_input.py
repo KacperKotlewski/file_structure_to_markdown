@@ -27,13 +27,14 @@ class UserInput():
         self._runAfter(after)
         return out
 
-    def normal(self, lowerCase=False, to_print:str="", after=None, tryagain=None, statment=None, invertedStatment:bool=False):
+    def normal(self, lowerCase=False, to_print:str="", after=None, tryagain=None, statment=None, addirionalStatmentArgs=None, invertedStatment:bool=False):
         out = None
         while True:
             print(Fore.YELLOW + f"{to_print}: ", end = '')
             i = input()
             print(Style.RESET_ALL, end = '')
 
+            i = i[-3:]+".md" if i[-3:].lower() == ".md" else i+".md"
             inp = i
             if lowerCase:
                 inp = inp.lower()
@@ -41,13 +42,13 @@ class UserInput():
                 out=inp
                 break
             elif invertedStatment:
-                if not statment(inp):
+                if not statment(inp, **addirionalStatmentArgs):
                     out=inp
                     break
                 else:
                     self._printTry(tryagain)
             else:
-                if statment(inp):
+                if statment(inp, **addirionalStatmentArgs):
                     out=inp
                     break
                 else:

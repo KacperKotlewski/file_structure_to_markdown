@@ -1,5 +1,5 @@
-from files2md.structure_objects import StructureObject
-from files2md import config
+from .. import StructureObject
+from ... import config
 
 class DirectoryObj(StructureObject):
     def __init__(self, dir, name):
